@@ -82,7 +82,7 @@ const start = async (host, secret, settings) => {
             await client.updateJob(job.uid, getRenderingStatus(job))
         } catch (err) {
             job.state = 'error';
-            job.error = err;
+            job.error = err.message;
             job.errorAt = new Date()
 
             await client.updateJob(job.uid, getRenderingStatus(job)).catch((err) => {
